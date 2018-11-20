@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,5 +43,24 @@ public class UserModel {
             e.printStackTrace();
         }
         return listUsers;
+    }
+
+    public boolean addUser(DataSource dataSource,  User newUser) {
+        Connection connect = null;
+        PreparedStatement statement = null;
+        try {
+            connect = dataSource.getConnection();
+            String username = newUser.getUsername();
+            String email = newUser.getEmail();
+            String query = "insert into users (username, email) values (?,?)";
+            statement = connect.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, email);
+            return statement.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

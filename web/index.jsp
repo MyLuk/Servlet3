@@ -4,7 +4,10 @@
 <div class="container mtb">
 	<div class="row">
 		<div class="col-lg-6">
-			<h1>Home</h1>
+			<h3>Home</h3>
+			<p>
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+			</p>
 		</div>
 	</div>
 </div>
