@@ -27,9 +27,16 @@ public class OperationControllerServlet extends HttpServlet {
                 break;
             case "adduser":
                 addUserFormLoader(request, response);
+            case "updateuser":
+                updateUserFormLoader(request, response);
             default:
                 errorPage(request, response);
         }
+    }
+
+    private void updateUserFormLoader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("title", "Update user");
+        request.getRequestDispatcher("updateUser.jsp").forward(request, response);
     }
 
     @Override
@@ -41,10 +48,19 @@ public class OperationControllerServlet extends HttpServlet {
                 addUserOperation(newUser);
                 listUsers(request, response);
                 break;
+            case "updateuseroperation":
+                User updatedUser = new User(Integer.parseInt(request.getParameter("usersId")),request.getParameter("username"),request.getParameter("email"));
+                updateUserOperation(updatedUser);
+                listUsers(request, response);
+                break;
             default:
                 errorPage(request, response);
                 break;
         }
+    }
+
+    private void updateUserOperation(User updatedUser) {
+        new UserModel().updateUser(dataSource, updatedUser);
     }
 
     private void addUserOperation(User newUser) {
