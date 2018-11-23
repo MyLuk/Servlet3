@@ -29,4 +29,14 @@ public class Files {
     public Files(String filename) {
         this.filename = filename;
     }
+
+    @Override
+    public String toString() {
+        return "Files{" +
+                "id=" + id +
+                ", filename='" + filename + '\'' +
+                ", label='" + label + '\'' +
+                ", caption='" + caption + '\'' +
+                '}';
+    }
 }

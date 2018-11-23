@@ -25,6 +25,15 @@ public class ImageUploadDemoServlet extends HttpServlet {
             case "filesupload":
                 filesUpload(request, response);
                 break;
+            default:
+                request.getRequestDispatcher("imageUploadDemo.jsp").forward(request, response);
+        }
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action").toLowerCase();
+        switch (action) {
             case "listingimages":
                 listingImages(request, response);
             default:

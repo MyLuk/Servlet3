@@ -14,6 +14,8 @@
 <form action="ImageUploadDemoServlet?action=filesUpload" method="post" enctype="multipart/form-data">
     Select images: <input type="file" name="files" multiple/>
     <input type="submit" value="Upload">
+    <br>
+    <a href="${pageContext.request.contextPath}/ImageUploadDemoServlet?action=listingImages">View available images</a>
 </form>
 </body>
 </html>
